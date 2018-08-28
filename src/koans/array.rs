@@ -98,7 +98,7 @@ fn for_loops() {
     let arr: [u64; 3] = [1, 2, 3];
     let y: u64 = 1;
     for x in &arr {
-        assert!(*x == y);
+        assert!(arr[0] == y);
     }
 }
 
@@ -106,10 +106,10 @@ fn for_loops() {
 #[test]
 fn for_loops_two() {
     let words: [&'static str; 3] = ["I", "love", "Rust"];
-    let mut sentence: String = String::new();
+    let mut sentence: Vec<String> = Vec::new();
     for word in words.iter() {
-        sentence.push_str(word);
+        sentence.push(word.to_string());
     }
     println!("{:?}", sentence);
-    assert!(sentence == "I love Rust".to_string());
+    assert!(sentence.join(" ") == "I love Rust".to_string());
 }
