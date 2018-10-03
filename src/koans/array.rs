@@ -97,7 +97,7 @@ fn complex_array_filter_map() {
 #[test]
 fn for_loops() {
     let arr: [u64; 3] = [1, 2, 3];
-    let mut y: u64 = 1;
+    let y: u64 = 1;
     for x in &arr {
         y = *x;
         assert!(*x == y);
@@ -110,5 +110,5 @@ fn for_loops_two() {
     let words: [&'static str; 3] = ["I", "love", "Rust"];
     let sentence: String = words.join(" ");
     println!("{:?}", sentence);
-    assert!(sentence == "I love Rust".to_string());
+    assert!(sentence.join(" ") == "I love Rust".to_string());
 }
