@@ -69,7 +69,8 @@ fn array_filter() {
 #[test]
 fn array_filter_map() {
     let arr: [u8; 5] = [2, 1, 2, 1, 2];
-    let mut iterator = arr.iter()
+    let mut iterator = arr
+        .iter()
         .filter_map(|&x| if x == 1 { Some(x) } else { None });
     assert!(iterator.next() == Some(1));
     assert!(iterator.next() == Some(1));
@@ -96,8 +97,9 @@ fn complex_array_filter_map() {
 #[test]
 fn for_loops() {
     let arr: [u64; 3] = [1, 2, 3];
-    let y: u64 = 1;
+    let mut y: u64 = 1;
     for x in &arr {
+        y = *x;
         assert!(*x == y);
     }
 }
@@ -106,10 +108,7 @@ fn for_loops() {
 #[test]
 fn for_loops_two() {
     let words: [&'static str; 3] = ["I", "love", "Rust"];
-    let mut sentence: String = String::new();
-    for word in words.iter() {
-        sentence.push_str(word);
-    }
+    let sentence: String = words.join(" ");
     println!("{:?}", sentence);
     assert!(sentence == "I love Rust".to_string());
 }
